@@ -12,21 +12,19 @@ public class Soldier{
 	
 	private String name;
 	private char gender;
-	private String faction;
-	private int regNo;
+	private String nationality;
 
 
 public Soldier (){
-	 this ("Unnamed", 'x', "Unknown", 0);
+	 this ("Unnamed", 'x', "Unknown");
 	
 }// end of no-arg
 
-public Soldier (String name, char gender, String faction, int regNo ){
+public Soldier (String name, char gender, String nationality ){
 
 this.name = name;
 this.gender = gender;
-this.faction = faction;
-this.regNo = regNo;
+this.nationality = nationality;
 
 }	//end of multi-arg
 	
@@ -38,12 +36,8 @@ this.regNo = regNo;
 		gender = g;
 	}
 	
-	public void setFaction (String f) {
-		faction = f;
-	}
-	
-	public void setRegNo (int r) {
-		regNo = r;
+	public void setNationality (String nat) {
+		nationality = nat;
 	}
 	
 	
@@ -55,16 +49,12 @@ this.regNo = regNo;
 		return gender;
 	} 
 	
-	public String getFaction(){
-		return faction;
-	}
-	
-	public int getRegNo(){
-		return regNo;
+	public String getNationality(){
+		return nationality;
 	}
 	
 	public String toString() {
-		return String.format("Name %s \nGender: %s \nFaction %s \nRegNo %d", name, gender, faction, regNo);
+		return String.format("Name %s \nGender: %s \nNationality %s", name, gender, nationality);
 		
 	}
 	
