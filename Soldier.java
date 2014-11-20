@@ -17,7 +17,7 @@ public class Soldier{
 
 
 public Soldier (){
-	 this ("Unnamed", x, "Unknown", 0);
+	 this ("Unnamed", 'x', "Unknown", 0);
 	
 }// end of no-arg
 
@@ -64,7 +64,8 @@ this.regNo = regNo;
 	}
 	
 	public String toString() {
-		return String.format("Name %s \n")
+		return String.format("Name %s \nGender: %s \nFaction %s \nRegNo %d", name, gender, faction, regNo);
+		
 	}
 	
 	
