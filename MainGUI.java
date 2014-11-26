@@ -9,10 +9,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class MainGUI extends JFrame implements ActionListener{
 
-	JMenu fileMenu;
+	JMenu alliedMenu;
+	JMenu axisMenu;
 	JMenu soldierMenu;
 	JLabel response;
 
@@ -26,7 +28,7 @@ public class MainGUI extends JFrame implements ActionListener{
 
 		
 		setTitle("War Game");
-		setSize(300, 200);
+		setSize(700, 400);
 		setResizable(false);
 		setLocation(250, 200);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -34,17 +36,22 @@ public class MainGUI extends JFrame implements ActionListener{
 		Container cPane = getContentPane();
 		cPane.setLayout(new FlowLayout());
 		
-		createFileMenu();
+		ImageIcon bgImage = new ImageIcon("ww2.jpg");
+		JLabel bg = new JLabel (bgImage);
+		cPane.add(bg);
+		
 		createSoldierMenu();
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar (menuBar);
-		menuBar.setBackground(Color.green);
-		menuBar.add(fileMenu);
+		menuBar.setBackground(Color.gray);
+		
 		menuBar.add(soldierMenu);
+		menuBar.add(axisMenu);
+		menuBar.add(alliedMenu);
 		
 		
-		response = new JLabel ("Opening of War Game");
+		response = new JLabel ("Respect. Honour. Educate.");
 		response.setSize(250,50);
 		cPane.add(response);
 		
@@ -69,33 +76,54 @@ public class MainGUI extends JFrame implements ActionListener{
 		JMenuItem item;
 		
 		soldierMenu = new JMenu("Army");
+		axisMenu = new JMenu("Axis");
+		alliedMenu = new JMenu ("Allied");
 		
-		item = new JMenuItem("Add");
-		item.setBackground(Color.red);
-		item.addActionListener(this);
-		soldierMenu.add(item); 
 		
-		item = new JMenuItem("Display"); 
-		item.setBackground(Color.blue);
+		item = new JMenuItem("Russian");
+		item.setBackground(Color.green);
 		item.addActionListener(this);
-		soldierMenu.add(item); 
-	}//soldier menu ends
-	
-	
-		public void createFileMenu(){
-		JMenuItem item;
+		alliedMenu.add(item); 
+		
+		item = new JMenuItem("French"); 
+		item.setBackground(Color.green);
+		item.addActionListener(this);
+		alliedMenu.add(item); 
 			
-		fileMenu = new JMenu("File");
+		item = new JMenuItem("British"); 
+		item.setBackground(Color.green);
+		item.addActionListener(this);
+		alliedMenu.add(item);
 			
-		item = new JMenuItem ("History");
+		item = new JMenuItem("German"); 
+		item.setBackground(Color.green);
+		item.addActionListener(this);
+		axisMenu.add(item);
+		
+		item = new JMenuItem("Itatian"); 
+		item.setBackground(Color.green);
+		item.addActionListener(this);
+		axisMenu.add(item);
+		
+		item = new JMenuItem("Japanese"); 
+		item.setBackground(Color.green);
+		item.addActionListener(this);
+		axisMenu.add(item);
+		
+		item = new JMenuItem ("Add");
 		item.setBackground(Color.yellow);
 		item.addActionListener(this);
-		fileMenu.add(item);
+		soldierMenu.add(item);
+		
+		item = new JMenuItem ("Display");
+		item.setBackground(Color.yellow);
+		item.addActionListener(this);
+		soldierMenu.add(item);
 		
 		item = new JMenuItem("Quit");
 		item.setBackground(Color.green);
 		item.addActionListener(this);
-		fileMenu.add(item);
+		soldierMenu.add(item);
 		
 		}//file menu ends
 	
