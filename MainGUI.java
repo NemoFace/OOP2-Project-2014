@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.io.*;
 
 public class MainGUI extends JFrame implements ActionListener{
 
@@ -17,6 +18,8 @@ public class MainGUI extends JFrame implements ActionListener{
 	JMenu axisMenu;
 	JMenu soldierMenu;
 	JLabel response;
+	
+	List <Resistance> rebels; //link list for rebel members
 
 	public static void main(String [] args){
 		MainGUI frame = new MainGUI();
@@ -25,8 +28,9 @@ public class MainGUI extends JFrame implements ActionListener{
 	
 
 	public MainGUI(){
-
 		
+		rebelSystem(); //for linklist
+				
 		setTitle("War Game");
 		setSize(700, 400);
 		setResizable(false);
@@ -51,11 +55,65 @@ public class MainGUI extends JFrame implements ActionListener{
 		menuBar.add(alliedMenu);
 		
 		
+		//Remove if nesssissary 
 		response = new JLabel ("Respect. Honour. Educate.");
 		response.setSize(250,50);
 		cPane.add(response);
-		
+					
 	}//constructer ends
+	
+	
+	 //Code referenced from BicycleFrame4	
+		public void rebelSystem() {
+			rebels = new LinkedList<Resistance>();
+		}
+		
+		//save 
+		public void save() throws IOException {
+			ObjectOutputStream os; 
+				os = new ObjectOutputStream (new FileOutputStream ("rebels.dat"));
+				os.writeObject(rebels);
+				os.close();
+		}
+		
+		//load
+		public void open(){
+			try{
+				ObjectInputStream is;
+				is = new ObjectInputStream  (new FileInputStream ("rebels.dat"));
+				rebels = (LinkedList <Resistance>) is.readObject();
+				is.close();
+			}
+			catch(Exception e){
+				JOptionPane.showMessageDialog(null, "File failed to load");
+				e.printStackTrace();
+			}
+			
+		} // end Code referenced from BicycleFrame4
+
+
+		//add member
+	public void addRebel(){
+		Resistance rebel = new Resistance();
+		rebel.setName(JOptionPane.showInputDialog("What is your name comarad??"));
+		rebels.add(rebel);
+	}
+	
+	public void display(){
+		JTextArea area = new JTextArea(); 
+		int numRebels = rebels.size();
+		if(numRebels >0){
+			area.setText("Current memebers of the Resistance:\n\n ");
+			for (int i = 0; i<numRebels; i++)
+				area.append (rebels.get);
+				  showMessage(area);
+		}
+		else 
+			showMessage("The trenches are empty");
+	}
+	
+	
+	
 	
 	public void actionPerformed (ActionEvent event){
 		String menuName;

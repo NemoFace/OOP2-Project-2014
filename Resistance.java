@@ -5,8 +5,9 @@
 
 //Resistance Class - Derived Class
 
+import java.io.*;
 
-public class Resistance extends Army {
+public class Resistance extends Army implements Serializable {
 	
 	private String name;
 	private char gender;
