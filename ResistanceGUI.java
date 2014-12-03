@@ -16,8 +16,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ResistanceGUI extends JFrame implements ActionListener {
 
@@ -116,8 +114,7 @@ public class ResistanceGUI extends JFrame implements ActionListener {
 
     public void display() {
         JTextArea area = new JTextArea();
-	//	saveButton = new JButton ("Save");
-        //	area.add(saveButton);
+
         int numRebels = rebels.size();
         if (numRebels > 0) {
             area.setText("Current memebers of the Resistance:\n\n ");
@@ -125,7 +122,10 @@ public class ResistanceGUI extends JFrame implements ActionListener {
                 area.append(rebels.get(i).toString());  //Code edited by John (LEARN!!!!)
             }
             showMessage(area);
-        } else {
+        } 
+        
+        
+        else {
             showMessage("The trenches are empty");
         }
     }

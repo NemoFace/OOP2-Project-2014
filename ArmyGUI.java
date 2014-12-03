@@ -19,7 +19,7 @@ public class ArmyGUI  extends JFrame implements ActionListener{
 	JLabel response; //remove if nessiary 
 	JButton saveButton;
 	JButton battleButton;
-
+ 	JButton loadButton;
 
 	LinkedList <Offical> soldiers; //link list for soldier members
 
@@ -30,7 +30,7 @@ public class ArmyGUI  extends JFrame implements ActionListener{
 	
     public ArmyGUI() {
     	
-    	soldiersystem(); //for linklist
+    	soldierSystem(); //for linklist
 				
 		setTitle("Offical");
 		setSize(900, 600);
@@ -48,11 +48,14 @@ public class ArmyGUI  extends JFrame implements ActionListener{
 		saveButton = new JButton("Save");
 		cPane.add(saveButton);
 		
+		loadButton = new JButton ("Load");
+		cPane.add(loadButton);
+		
 		battleButton = new JButton("Battle");
 		cPane.add(battleButton);
-		
-		
+
 		createSoldierMenu();
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar (menuBar);
@@ -64,7 +67,7 @@ public class ArmyGUI  extends JFrame implements ActionListener{
     }//constructer ends
     
     	 	
-		public void soldiersystem() {
+		public void soldierSystem() {
 			soldiers = new LinkedList<Offical>();
 		}
 		
@@ -93,28 +96,29 @@ public class ArmyGUI  extends JFrame implements ActionListener{
 
 		
 		//Referenced from Bicycle Frame4 
-	public void addSoldier(){
-		Random rnd = new Random();
-		
-		Offical soldier = new Offical();
-		soldier.setUnit(JOptionPane.showInputDialog("What is your Unit comarad??"));
-		soldier.setMoral(rnd.nextInt(10));
-		soldier.setArms(rnd.nextInt(10));    //FIX
-		soldier.setSupport(rnd.nextInt(10));
-		soldiers.add(soldier);
+		public void addSoldier(){
+			Random rnd = new Random();
+			
+			Offical soldier = new Offical();
+			soldier.setUnit(JOptionPane.showInputDialog("What is your unit soldier??"));
+			soldier.setRegNo(Integer.parseInt(JOptionPane.showInputDialog("What is your regiment number soldier??"))); 
+			soldier.setMoral(rnd.nextInt(10));
+			soldier.setArms(rnd.nextInt(10));    //FIX
+			soldier.setSupport(rnd.nextInt(10));
+			soldiers.add(soldier);
 	}
 	
-	public void display(){
-		JTextArea area = new JTextArea(); 
-	//	saveButton = new JButton ("Save");
-	//	area.add(saveButton);
-		int numSoldiers = soldiers.size();
-		if(numSoldiers >0){
-			area.setText("Current memebers of the Offical Army:\n\n ");
-			for (int i = 0; i<numSoldiers; i++)
+		public void display(){
+			JTextArea area = new JTextArea(); 
+			int numSoldiers = soldiers.size();
+			if(numSoldiers >0){
+				area.setText("Current memebers of the Offical Army:\n\n ");
+				for (int i = 0; i<numSoldiers; i++) {
 				area.append (soldiers.get(i).toString());  //Code edited by John (LEARN!!!!)
-				  showMessage(area);
-		}
+			    }
+				  
+				showMessage(area);
+			}
 		else 
 			showMessage("The trenches are empty");
 	}
@@ -130,39 +134,46 @@ public class ArmyGUI  extends JFrame implements ActionListener{
       
       //end reference
 	
-	public void actionPerformed (ActionEvent event){
-		String menuName;
-		menuName = event.getActionCommand();
+		public void actionPerformed (ActionEvent event){
+			String menuName;
+			menuName = event.getActionCommand();
 		
-		if (menuName.equals("Quit")){
-			System.exit(0);
-		}
-		else if (event.getActionCommand().equals ("Add")){
-			addSoldier();
-		}
+			if (menuName.equals("Quit")){
+				System.exit(0);
+			}
+			else if (event.getActionCommand().equals ("Add")){
+				addSoldier();
+			}
 		
- 		else if (event.getActionCommand().equals("Display")){
- 			display();
- 		}
+ 			else if (event.getActionCommand().equals("Display")){
+ 				display();
+ 			}
  		
- 	//	else if (event.getActionCommand().equals("Save")){
- 	//		showMessage("Saved!!");
- 			
- 	//		save();
- 		//}	
-			
-		else {
-			response.setText("This will open " + menuName);
-		}
-		
-	}//actionPreformed ends
+ 			else if (event.getActionCommand().equals("Save")) 
+        	    try {
+            	    save();
+                	showMessage ("Soldier details saved");
+         		} 
+            	catch (IOException ex) {
+            		showMessage("Not able to save the file:\n"+
+      	 				"Check the console printout for clues to why ");
+      	 			ex.printStackTrace();
+            	}
+            
+           
+           else if (event.getActionCommand() .equals ("Load")){
+      	 		open();
+         		display();
+      			}
+            
+		}//actionPreformed ends
 	
 	
-	private void createSoldierMenu(){
+		private void createSoldierMenu(){
 		
-		JMenuItem item;
+			JMenuItem item;
 		
-		soldierMenu = new JMenu("Army");
+		soldierMenu = new JMenu("New");
     	item = new JMenuItem ("Add");
 		item.setBackground(Color.yellow);
 		item.addActionListener(this);
@@ -178,6 +189,6 @@ public class ArmyGUI  extends JFrame implements ActionListener{
 		item.addActionListener(this);
 		soldierMenu.add(item);
 		
-		}
+		}//end of soldier menu
     
-}
+}//end of class
