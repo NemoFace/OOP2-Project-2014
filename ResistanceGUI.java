@@ -5,6 +5,12 @@
 //Start Date - 03/12/2014
 //OOP2 Project 
 // ResistanceGUI
+
+//MORAL-ARMS STATS NOT SAVED
+
+
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,6 +25,7 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     JLabel response; //remove if nessiary 
     JButton saveButton;
     JButton battleButton;
+    JButton loadButton;
 
     LinkedList<Resistance> rebels; //link list for rebel members
 
@@ -43,6 +50,10 @@ public class ResistanceGUI extends JFrame implements ActionListener {
         ImageIcon bgImage = new ImageIcon("AntiSoviet.jpg");
         JLabel bg = new JLabel(bgImage);
         cPane.add(bg);
+
+		loadButton = new JButton("Load");
+        loadButton.addActionListener(this);
+        cPane.add(loadButton);
 
         saveButton = new JButton("Save");
         saveButton.addActionListener(this);
@@ -134,21 +145,31 @@ public class ResistanceGUI extends JFrame implements ActionListener {
 
         if (menuName.equals("Quit")) {
             System.exit(0);
-        } else if (event.getActionCommand().equals("Add")) {
+        } 
+        else if (event.getActionCommand().equals("Add")) {
             addRebel();
-        } else if (event.getActionCommand().equals("Display")) {
+        }
+        else if (event.getActionCommand().equals("Display")) {
             display();
-        } else if (event.getActionCommand().equals("Save")) {
-            showMessage("Saved!!");
-
+        }
+        else if (event.getActionCommand().equals("Save")) 
             try {
                 save();
-            } catch (IOException ex) {
-                Logger.getLogger(ResistanceGUI.class.getName()).log(Level.SEVERE, null, ex);
+                showMessage ("Rebel details saved");
+         		} 
+            catch (IOException ex) {
+            	showMessage("Not able to save the file:\n"+
+      	 	"Check the console printout for clues to why ");
+      	 	ex.printStackTrace();
             }
-        } else {
-            response.setText("This will open " + menuName);
-        }
+            
+            
+       else if (event.getActionCommand() .equals ("Load")){
+      	 open();
+         display();
+      	}
+            
+            
 
     }//actionPreformed ends
 
@@ -156,7 +177,7 @@ public class ResistanceGUI extends JFrame implements ActionListener {
 
         JMenuItem item;
 
-        soldierMenu = new JMenu("Army");
+        soldierMenu = new JMenu("New");
         item = new JMenuItem("Add");
         item.setBackground(Color.yellow);
         item.addActionListener(this);

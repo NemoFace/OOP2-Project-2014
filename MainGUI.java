@@ -27,7 +27,7 @@ public class MainGUI extends JFrame implements ActionListener{
 	public MainGUI(){
 		
 				
-		setTitle("War Game");
+		setTitle("Choose a Side");
 		setSize(700, 400);
 		setResizable(false);
 		setLocation(250, 200);
@@ -50,14 +50,19 @@ public class MainGUI extends JFrame implements ActionListener{
 						
 	}//constructer ends
 	
-
-        @Override
 	public void actionPerformed (ActionEvent event){
             if (event.getActionCommand() == "Resistance"){
-                ResistanceGUI a = new ResistanceGUI();
-                a.setVisible(true);
+                ResistanceGUI r = new ResistanceGUI();
+                r.setVisible(true);
                 this.setVisible(false);
             }
+            
+            else if (event.getActionCommand() == "Army"){
+            	ArmyGUI a = new ArmyGUI();
+            	a.setVisible(true);
+            	this.setVisible(false);
+            }
+            
 	
 	}//actionPreformed ends
 	
