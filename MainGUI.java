@@ -1,3 +1,5 @@
+package javaapplication3;
+
 //Niamh Moylan
 //T00158725
 //Start Date - 25/11/2014
@@ -40,15 +42,23 @@ public class MainGUI extends JFrame implements ActionListener{
 		cPane.add(bg);
 		
 		resButton = new JButton("Resistance");
+                resButton.addActionListener(this);
 		cPane.add(resButton);
 		
 		armButton = new JButton("Army");
+                armButton.addActionListener(this);
 		cPane.add(armButton);
 						
 	}//constructer ends
 	
 
+        @Override
 	public void actionPerformed (ActionEvent event){
+            if (event.getActionCommand() == "Resistance"){
+                ResistanceGUI a = new ResistanceGUI();
+                a.setVisible(true);
+                this.setVisible(false);
+            }
 	
 	}//actionPreformed ends
 	

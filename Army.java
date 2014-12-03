@@ -1,3 +1,5 @@
+package javaapplication3;
+
 //Niamh Moylan
 //T00158725
 //Start Date - 27/11/2014
@@ -27,13 +29,13 @@ public class Army {
 	}
 
 	public void setMoral(int moral) {
-		moral = moral;
+		this.moral = moral;
 	}
 	public void setArms(int arms){	
-		arms = arms;
+		this.arms = arms;
 	}
 	public void setSupport(int support) {
-		support = support;
+		this.support = support;
 	}
 	
 	public int getMoral(){
