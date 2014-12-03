@@ -129,6 +129,19 @@ public class ResistanceGUI extends JFrame implements ActionListener {
             showMessage("The trenches are empty");
         }
     }
+    
+    
+    
+   /* public void battle(){
+    	JTextArea winLose = new JTextArea();
+    	if (rebel.getMoral() + rebel.getArms() + rebel.getSupport() =<20 ){
+    		JOptionPane.ShowMessageDiaglog("ConorGettingShot.jpg");}
+    	else{
+    		 JOptionPane.ShowMessageDiaglog("SoldiersSkipping.jpg")
+    	
+    }  */
+    
+    
 
     public void showMessage(String s) {
         JOptionPane.showMessageDialog(null, s);
