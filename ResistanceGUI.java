@@ -29,7 +29,7 @@ public class ResistanceGUI  extends JFrame implements ActionListener{
 	
     public ResistanceGUI() {
     	
-    //	rebelSystem(); //for linklist
+    	rebelSystem(); //for linklist
 				
 		setTitle("Resistance");
 		setSize(700, 600);
@@ -63,9 +63,9 @@ public class ResistanceGUI  extends JFrame implements ActionListener{
     }//constructer ends
     
     	 	
-	//	public void rebelSystem() {
-	//		rebels = new LinkedList<Resistance>();
-	//	}
+		public void rebelSystem() {
+			rebels = new LinkedList<Resistance>();
+		}
 		
 		//save 
 		public void save() throws IOException {
@@ -93,10 +93,15 @@ public class ResistanceGUI  extends JFrame implements ActionListener{
 		
 		//Referenced from Bicycle Frame4 
 	public void addRebel(){
+		Random rnd = new Random();
+		
 		Resistance rebel = new Resistance();
 		rebel.setName(JOptionPane.showInputDialog("What is your name comarad??"));
 		rebel.setGender(JOptionPane.showInputDialog("Are you Male or Female? (m/f)").charAt(0));
 		rebel.setNat(JOptionPane.showInputDialog("What country do you hail from??"));
+		rebel.setMoral(rnd.nextInt(10));
+		rebel.setArms(rnd.nextInt(10));    //FIX
+		rebel.setSupport(rnd.nextInt(10));
 		rebels.add(rebel);
 	}
 	
@@ -139,7 +144,13 @@ public class ResistanceGUI  extends JFrame implements ActionListener{
 		
  		else if (event.getActionCommand().equals("Display")){
  			display();
- 		}	
+ 		}
+ 		
+ 	//	else if (event.getActionCommand().equals("Save")){
+ 	//		showMessage("Saved!!");
+ 			
+ 	//		save();
+ 		//}	
 			
 		else {
 			response.setText("This will open " + menuName);
