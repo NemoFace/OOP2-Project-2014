@@ -13,6 +13,7 @@ public class Resistance extends Army implements Serializable {
 	private String name;
 	private char gender;
 	private String nationality;
+	private final int bonus = 5;
 	
     public Resistance() {
     	
@@ -40,6 +41,13 @@ public class Resistance extends Army implements Serializable {
 	
 	public void setNat(String nat) {
 		nationality = nat;
+	}
+	
+	public void setResMor(int moral){
+		setMoral(getMoral() + bonus);
+		
+	}public void setResSup(int support){
+		setSupport(getSupport() + bonus);
 	}
 	
 	

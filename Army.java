@@ -17,6 +17,7 @@ public class Army {
 	private int arms;
 	private int support;
 	
+	
 	public Army (){
 		this (0,0,0);
 	}

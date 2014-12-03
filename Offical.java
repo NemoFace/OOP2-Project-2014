@@ -12,6 +12,7 @@ public class Offical extends Army implements Serializable {
 
 private String unit;
 private int regNo;
+private final int bonus = 7;
 	
 	
 	public Offical() {
@@ -33,6 +34,10 @@ private int regNo;
 	
 	public int getRegNo(){
 		return regNo;
+	}
+	
+	public void setOfArms(int arms){
+		setArms(getArms() + bonus);
 	}
 	
 	public void setUnit(String u){
