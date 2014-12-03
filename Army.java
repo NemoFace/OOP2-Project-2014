@@ -48,7 +48,7 @@ public class Army {
 	}
 	
 	public String toString(){
-		return String.format("Current level of: \nMoral: %d \nArms: %d \nSupport: %d", moral, arms, support);
+		return String.format("\nCurrent level of: \nMoral: %d \nArms: %d \nSupport: %d", moral, arms, support);
 	}
 		
 	}

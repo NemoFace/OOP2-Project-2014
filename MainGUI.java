@@ -18,8 +18,9 @@ public class MainGUI extends JFrame implements ActionListener{
 	JMenu axisMenu;
 	JMenu soldierMenu;
 	JLabel response;
+//	JButton saveButton;
 	
-	List <Resistance> rebels; //link list for rebel members
+	LinkedList <Resistance> rebels; //link list for rebel members
 
 	public static void main(String [] args){
 		MainGUI frame = new MainGUI();
@@ -63,7 +64,7 @@ public class MainGUI extends JFrame implements ActionListener{
 	}//constructer ends
 	
 	
-	 //Code referenced from BicycleFrame4	
+	 	
 		public void rebelSystem() {
 			rebels = new LinkedList<Resistance>();
 		}
@@ -89,23 +90,27 @@ public class MainGUI extends JFrame implements ActionListener{
 				e.printStackTrace();
 			}
 			
-		} // end Code referenced from BicycleFrame4
+		} 
 
-
-		//add member
+		
+		//Referenced from Bicycle Frame4 
 	public void addRebel(){
 		Resistance rebel = new Resistance();
 		rebel.setName(JOptionPane.showInputDialog("What is your name comarad??"));
+		rebel.setGender(JOptionPane.showInputDialog("Are you Male or Female? (m/f)").charAt(0));
+		rebel.setNat(JOptionPane.showInputDialog("What country do you hail from??"));
 		rebels.add(rebel);
 	}
 	
 	public void display(){
 		JTextArea area = new JTextArea(); 
+	//	saveButton = new JButton ("Save");
+	//	area.add(saveButton);
 		int numRebels = rebels.size();
 		if(numRebels >0){
 			area.setText("Current memebers of the Resistance:\n\n ");
 			for (int i = 0; i<numRebels; i++)
-				area.append (rebels.get);
+				area.append (rebels.get(i).toString());  //Code edited by John (LEARN!!!!)
 				  showMessage(area);
 		}
 		else 
@@ -113,7 +118,15 @@ public class MainGUI extends JFrame implements ActionListener{
 	}
 	
 	
-	
+	   public void showMessage (String s){
+      	JOptionPane.showMessageDialog(null,s);
+      }
+      
+      public void showMessage (JTextArea s){
+      	JOptionPane.showMessageDialog(null,s);
+      }
+      
+      //end reference
 	
 	public void actionPerformed (ActionEvent event){
 		String menuName;
@@ -122,7 +135,15 @@ public class MainGUI extends JFrame implements ActionListener{
 		if (menuName.equals("Quit")){
 			System.exit(0);
 		}
-		else{
+		else if (event.getActionCommand().equals ("Add")){
+			addRebel();
+		}
+		
+ 		else if (event.getActionCommand().equals("Display")){
+ 			display();
+ 		}	
+			
+		else {
 			response.setText("This will open " + menuName);
 		}
 		
@@ -138,7 +159,7 @@ public class MainGUI extends JFrame implements ActionListener{
 		alliedMenu = new JMenu ("Allied");
 		
 		
-		item = new JMenuItem("Russian");
+	/*	item = new JMenuItem("Russian");
 		item.setBackground(Color.green);
 		item.addActionListener(this);
 		alliedMenu.add(item); 
@@ -166,7 +187,9 @@ public class MainGUI extends JFrame implements ActionListener{
 		item = new JMenuItem("Japanese"); 
 		item.setBackground(Color.green);
 		item.addActionListener(this);
-		axisMenu.add(item);
+		axisMenu.add(item); 
+		
+		*/
 		
 		item = new JMenuItem ("Add");
 		item.setBackground(Color.yellow);

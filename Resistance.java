@@ -55,7 +55,7 @@ public class Resistance extends Army implements Serializable {
 	}
 	
 	public String toString() {
-		return String.format("Name %s \nGender: %s \nNationality %s", name, gender, nationality + super.toString());
+		return String.format("Name %s \nGender: %s \nNationality %s",name, gender, nationality + super.toString());
 		
 	}
     
