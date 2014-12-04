@@ -1,5 +1,4 @@
 
-
 //Niamh Moylan
 //T00158725
 //Start Date - 03/12/2014
@@ -24,6 +23,7 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     JButton saveButton;
     JButton battleButton;
     JButton loadButton;
+    Resistance rebel;
 
     LinkedList<Resistance> rebels; //link list for rebel members
 
@@ -102,7 +102,7 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     public void addRebel() {
         Random rnd = new Random();
 
-        Resistance rebel = new Resistance();
+        rebel = new Resistance();
         rebel.setName(JOptionPane.showInputDialog("What is your name comarad??"));
         rebel.setGender(JOptionPane.showInputDialog("Are you Male or Female? (m/f)").charAt(0));
         rebel.setNat(JOptionPane.showInputDialog("What country do you hail from??"));
@@ -132,23 +132,29 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     
     
     
-   /* public void battle(){
+    public void battle(){
     	JTextArea winLose = new JTextArea();
-    	if (rebel.getMoral() + rebel.getArms() + rebel.getSupport() =<20 ){
-    		JOptionPane.ShowMessageDiaglog("ConorGettingShot.jpg");}
-    	else{
-    		 JOptionPane.ShowMessageDiaglog("SoldiersSkipping.jpg")
-    	
-    }  */
+        
+        int x = rebel.getMoral();
+        int y = rebel.getArms();
+        int z = rebel.getSupport();
+    	if ((x+y+z) <= 20 ){
+    		JOptionPane.showMessageDialog(this,"Dun Died, Mate");
+        } 
+        else
+        {
+    		 JOptionPane.showMessageDialog(this,"Winnnnnnnnaaaa");
+        }
+    }  
     
     
 
     public void showMessage(String s) {
-        JOptionPane.showMessageDialog(null, s);
+        JOptionPane.showMessageDialog(this, s);
     }
 
     public void showMessage(JTextArea s) {
-        JOptionPane.showMessageDialog(null, s);
+        JOptionPane.showMessageDialog(this, s);
     }
 
       //end reference
