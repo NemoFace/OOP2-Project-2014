@@ -102,7 +102,7 @@ public class ArmyGUI  extends JFrame implements ActionListener{
 			Offical soldier = new Offical();
 			soldier.setUnit(JOptionPane.showInputDialog("What is your unit soldier??"));
 			soldier.setRegNo(Integer.parseInt(JOptionPane.showInputDialog("What is your regiment number soldier??"))); 
-			soldier.setMoral(rnd.nextInt(10));
+			soldier.setMorale(rnd.nextInt(10));
 			soldier.setArms(rnd.nextInt(10));    //FIX
 			soldier.setSupport(rnd.nextInt(10));
 			soldiers.add(soldier);

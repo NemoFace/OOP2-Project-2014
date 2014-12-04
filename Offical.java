@@ -22,8 +22,8 @@ private final int bonus = 7;
 		
 	}
 	
-	public Offical (String unit, int regNo, int moral, int arms, int support){
-    	super(moral, arms, support);
+	public Offical (String unit, int regNo, int morale, int arms, int support){
+    	super(morale, arms, support);
 		setUnit(unit);
 		setRegNo(regNo);
 	}

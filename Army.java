@@ -10,10 +10,10 @@
 //This class give the blueprint for every Army created within this game
 
 
-
-public class Army {
+import java.io.*;
+public class Army implements Serializable {
 	
-	private int moral;
+	private int morale;
 	private int arms;
 	private int support;
 	
@@ -23,14 +23,14 @@ public class Army {
 	}
 	
 	
-	public Army (int moral, int arms, int support){
-		this.moral = moral;
+	public Army (int morale, int arms, int support){
+		this.morale = morale;
 		this.arms = arms;
 		this.support = support;	
 	}
 
-	public void setMoral(int moral) {
-		this.moral = moral;
+	public void setMorale(int morale) {
+		this.morale = morale;
 	}
 	public void setArms(int arms){	
 		this.arms = arms;
@@ -39,8 +39,8 @@ public class Army {
 		this.support = support;
 	}
 	
-	public int getMoral(){
-		return moral;
+	public int getMorale(){
+		return morale;
 	}
 	
 	public int getArms() {
@@ -51,7 +51,7 @@ public class Army {
 	}
 	
 	public String toString(){
-		return String.format("\nCurrent level of: \nMoral: %d \nArms: %d \nSupport: %d", moral, arms, support);
+		return String.format("\nCurrent level of: \nMorale: %d \nArms: %d \nSupport: %d", morale, arms, support);
 	}
 		
 	}

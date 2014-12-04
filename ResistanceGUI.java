@@ -37,9 +37,9 @@ public class ResistanceGUI extends JFrame implements ActionListener {
         rebelSystem(); //for linklist
 
         setTitle("Resistance");
-        setSize(700, 600);
+        setSize(500, 550);
         setResizable(false);
-        setLocation(250, 200);
+        setLocation(350, 100);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Container cPane = getContentPane();
@@ -79,6 +79,10 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     public void save() throws IOException {
         ObjectOutputStream os;
         os = new ObjectOutputStream(new FileOutputStream("rebels.dat"));
+        for(Resistance r:rebels)
+        {
+        	System.out.println(r.toString());
+        }
         os.writeObject(rebels);
         os.close();
     }
@@ -106,9 +110,10 @@ public class ResistanceGUI extends JFrame implements ActionListener {
         rebel.setName(JOptionPane.showInputDialog("What is your name comarad??"));
         rebel.setGender(JOptionPane.showInputDialog("Are you Male or Female? (m/f)").charAt(0));
         rebel.setNat(JOptionPane.showInputDialog("What country do you hail from??"));
-        rebel.setMoral(rnd.nextInt(10));
+        rebel.setResMor(rnd.nextInt(10));
         rebel.setArms(rnd.nextInt(10));    //FIX
         rebel.setSupport(rnd.nextInt(10));
+        System.out.println(rebel.toString());
         rebels.add(rebel);
     }
 
@@ -135,16 +140,24 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     public void battle(){
     	JTextArea winLose = new JTextArea();
         
-        int x = rebel.getMoral();
+        int x = rebel.getMorale();
         int y = rebel.getArms();
         int z = rebel.getSupport();
-    	if ((x+y+z) <= 20 ){
-    		JOptionPane.showMessageDialog(this,"Dun Died, Mate");
+        int total = (x + y + z); 
+    	if (total < 15 ){
+    		JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nThe enemy has defeated you");
         } 
-        else
+        	
+        else if (total == 15)
         {
-    		 JOptionPane.showMessageDialog(this,"Winnnnnnnnaaaa");
+        	JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nPeace has been found");
+        	
         }
+       else
+        {
+    		 JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nVictory!!");
+        }
+     
     }  
     
     
@@ -186,6 +199,10 @@ public class ResistanceGUI extends JFrame implements ActionListener {
        else if (event.getActionCommand() .equals ("Load")){
       	 open();
          display();
+      	}
+      	
+      	else if (event.getActionCommand() .equals ("Battle")){
+      		battle();
       	}
             
             

@@ -23,9 +23,9 @@ public class Resistance extends Army implements Serializable {
     	setNat("Unknown"); 
     }
     
-    public Resistance(String name, char gender, String nationality, int moral, int arms, int support){
+    public Resistance(String name, char gender, String nationality, int morale, int arms, int support){
     	
-    	super(moral, arms, support);
+    	super(morale, arms, support);
     	setName(name);
     	setGender(gender);
     	setNat(nationality);
@@ -43,8 +43,8 @@ public class Resistance extends Army implements Serializable {
 		nationality = nat;
 	}
 	
-	public void setResMor(int moral){
-		setMoral(getMoral() + bonus);
+	public void setResMor(int morale){
+		setMorale(getMorale() + bonus);
 		
 	}public void setResSup(int support){
 		setSupport(getSupport() + bonus);
