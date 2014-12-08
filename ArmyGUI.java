@@ -77,7 +77,7 @@ public class ArmyGUI extends JFrame implements ActionListener {
     public void save() throws IOException {
         ObjectOutputStream os;
         os = new ObjectOutputStream(new FileOutputStream("soldiers.dat"));
-        os.writeObject(soldiers);
+        os.writeObject(soldier);
         os.close();
     }
 
@@ -87,8 +87,9 @@ public class ArmyGUI extends JFrame implements ActionListener {
         try {
             ObjectInputStream is;
             is = new ObjectInputStream(new FileInputStream("soldiers.dat"));
-            soldiers = (LinkedList<Offical>) is.readObject();
+            soldier = (Offical) is.readObject();
             is.close();
+            soldiers.add(soldier);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "File failed to load");
             e.printStackTrace();
@@ -104,7 +105,7 @@ public class ArmyGUI extends JFrame implements ActionListener {
 		//CHECK HERE
 		
 		
-		Offical soldier = new Offical();
+		soldier = new Offical();
 			soldier.setUnit(JOptionPane.showInputDialog("What is your unit soldier??"));
 			soldier.setRegNo(Integer.parseInt(JOptionPane.showInputDialog("What is your regiment number soldier??"))); 
 			soldier.setMorale(rnd.nextInt(10));
