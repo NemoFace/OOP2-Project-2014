@@ -145,16 +145,27 @@ public class ResistanceGUI extends JFrame implements ActionListener {
         int z = rebel.getSupport();
         int total = (x + y + z); 
     	if (total < 15 ){
+    		FailGUI f = new FailGUI();
+    		f.setVisible(true);
+                this.setVisible(false);
+    		
     		JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nThe enemy has defeated you");
         } 
         	
         else if (total == 15)
         {
+        	DrawGUI d = new DrawGUI();
+    		d.setVisible(true);
+                this.setVisible(false);
         	JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nPeace has been found");
         	
         }
        else
         {
+        	
+        	WinGUI w = new WinGUI();
+    		w.setVisible(true);
+                this.setVisible(false);
     		 JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nVictory!!");
         }
      
