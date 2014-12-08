@@ -1,3 +1,11 @@
+
+//Niamh Moylan
+//T00158725
+//Start Date - 07/12/2014
+//OOP2 Project 
+
+//Outcome GUIs
+
 import javax.swing.*;
 import java.awt.*;
 

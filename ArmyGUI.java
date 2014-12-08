@@ -1,4 +1,4 @@
-//UPDARES
+//UPDATES
 
 //Niamh Moylan
 //T00158725
@@ -16,7 +16,6 @@ import java.io.*;
 public class ArmyGUI extends JFrame implements ActionListener {
 	
 	JMenu soldierMenu;
-    JLabel response; //remove if nessiary 
     JButton saveButton;
     JButton battleButton;
     JButton loadButton;
@@ -97,11 +96,13 @@ public class ArmyGUI extends JFrame implements ActionListener {
 
     } //end of open	
 
-
+ //**REFERENCED FROM BICYCLE FRAME4**//
 
 	public void addSoldier(){
 		
 		Random rnd = new Random();
+		//CHECK HERE
+		
 		
 		Offical soldier = new Offical();
 			soldier.setUnit(JOptionPane.showInputDialog("What is your unit soldier??"));
@@ -134,9 +135,7 @@ public class ArmyGUI extends JFrame implements ActionListener {
 		}
 	}  //end display
 	
-	
-	//from here
-	
+		
 	
 	   public void showMessage (String s){
       	JOptionPane.showMessageDialog(null,s);
@@ -145,8 +144,48 @@ public class ArmyGUI extends JFrame implements ActionListener {
       public void showMessage (JTextArea s){
       	JOptionPane.showMessageDialog(null,s);
       }
-      
-      //end reference
+          
+    //**END REFERENCE**//
+	
+	 public void battle(){
+    	JTextArea winLose = new JTextArea();
+        
+        int x = soldier.getMorale();
+        int y = soldier.getArms();
+        int z = soldier.getSupport();
+        int total = (x + y + z); 
+    	if (total < 15 ){
+    		FailGUI f = new FailGUI();
+    		f.setVisible(true);
+                this.setVisible(false);
+    		
+    		JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nThe enemy has defeated you");
+        } 
+        	
+        else if (total == 15)
+        {
+        	DrawGUI d = new DrawGUI();
+    		d.setVisible(true);
+                this.setVisible(false);
+        	JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nPeace has been found");
+        	
+        }
+       else
+        {
+        	
+        	WinGUI w = new WinGUI();
+    		w.setVisible(true);
+                this.setVisible(false);
+    		 JOptionPane.showMessageDialog(this, "Your total: " + total + "\n\nVictory!!");
+        }
+     
+    }  //end battle
+	
+
+	//from here
+	
+	
+    //**REFERENCED FROM BICYCLE FRAME4**//
 	
 		public void actionPerformed (ActionEvent event){
 			String menuName;
@@ -179,9 +218,15 @@ public class ArmyGUI extends JFrame implements ActionListener {
       	 		open();
          		display();
       			}
+      			
+      			
+      		else if (event.getActionCommand() .equals ("Battle")){
+      		battle();
+      	}
             
 		}//actionPreformed ends
 	
+	//**END REFERENCE**//
 	
 		private void createSoldierMenu(){
 		

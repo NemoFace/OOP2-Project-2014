@@ -5,11 +5,6 @@
 //OOP2 Project 
 // ResistanceGUI
 
-//MORAL-ARMS STATS NOT SAVED
-
-
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,8 +13,7 @@ import java.io.*;
 
 public class ResistanceGUI extends JFrame implements ActionListener {
 
-    JMenu soldierMenu;
-    JLabel response; //remove if nessiary 
+    JMenu rebelMenu;
     JButton saveButton;
     JButton battleButton;
     JButton loadButton;
@@ -61,13 +55,13 @@ public class ResistanceGUI extends JFrame implements ActionListener {
         battleButton.addActionListener(this);
         cPane.add(battleButton);
 
-        createSoldierMenu();
+        createRebelMenu();
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
         menuBar.setBackground(Color.gray);
 
-        menuBar.add(soldierMenu);
+        menuBar.add(rebelMenu);
 
     }//constructer ends
 
@@ -102,7 +96,8 @@ public class ResistanceGUI extends JFrame implements ActionListener {
 
     }
 
-    //Referenced from Bicycle Frame4 
+    
+    //**REFERENCED FROM BICYCLE FRAME4**//
     public void addRebel() {
         Random rnd = new Random();
 
@@ -136,6 +131,15 @@ public class ResistanceGUI extends JFrame implements ActionListener {
     }
     
     
+       public void showMessage(String s) {
+        JOptionPane.showMessageDialog(this, s);
+    }
+
+    public void showMessage(JTextArea s) {
+        JOptionPane.showMessageDialog(this, s);
+    }
+    
+    //**END REFERENCE**//
     
     public void battle(){
     	JTextArea winLose = new JTextArea();
@@ -170,18 +174,7 @@ public class ResistanceGUI extends JFrame implements ActionListener {
         }
      
     }  
-    
-    
-
-    public void showMessage(String s) {
-        JOptionPane.showMessageDialog(this, s);
-    }
-
-    public void showMessage(JTextArea s) {
-        JOptionPane.showMessageDialog(this, s);
-    }
-
-      //end reference
+  //**REFERENCED FROM BICYCLE FRAME4**//
     public void actionPerformed(ActionEvent event) {
         String menuName;
         menuName = event.getActionCommand();
@@ -219,26 +212,28 @@ public class ResistanceGUI extends JFrame implements ActionListener {
             
 
     }//actionPreformed ends
+    
+       //**END REFERENCE**//
 
-    private void createSoldierMenu() {
+    private void createRebelMenu() {
 
         JMenuItem item;
 
-        soldierMenu = new JMenu("New");
+        rebelMenu = new JMenu("New");
         item = new JMenuItem("Add");
         item.setBackground(Color.yellow);
         item.addActionListener(this);
-        soldierMenu.add(item);
+        rebelMenu.add(item);
 
         item = new JMenuItem("Display");
         item.setBackground(Color.yellow);
         item.addActionListener(this);
-        soldierMenu.add(item);
+        rebelMenu.add(item);
 
         item = new JMenuItem("Quit");
         item.setBackground(Color.green);
         item.addActionListener(this);
-        soldierMenu.add(item);
+        rebelMenu.add(item);
 
     }
 
