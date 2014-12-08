@@ -77,6 +77,11 @@ public class ArmyGUI extends JFrame implements ActionListener {
     public void save() throws IOException {
         ObjectOutputStream os;
         os = new ObjectOutputStream(new FileOutputStream("soldiers.dat"));
+      	for(Offical o:soldiers)
+      	{
+      		System.out.println(o.toString());
+      	}
+      
         os.writeObject(soldier);
         os.close();
     }
@@ -102,14 +107,13 @@ public class ArmyGUI extends JFrame implements ActionListener {
 	public void addSoldier(){
 		
 		Random rnd = new Random();
-		//CHECK HERE
 		
 		
 		soldier = new Offical();
 			soldier.setUnit(JOptionPane.showInputDialog("What is your unit soldier??"));
 			soldier.setRegNo(Integer.parseInt(JOptionPane.showInputDialog("What is your regiment number soldier??"))); 
 			soldier.setMorale(rnd.nextInt(10));
-			soldier.setArms(rnd.nextInt(10));    //FIX
+			soldier.setArms(rnd.nextInt(10));    
 			soldier.setSupport(rnd.nextInt(10));
 			soldiers.add(soldier);
 	} //end add soldier
@@ -121,7 +125,7 @@ public class ArmyGUI extends JFrame implements ActionListener {
 		
 		if (numSoldiers  > 0){
 			
-			area.setText("Current enlistments: \n\n");
+			area.setText("Current enlistments: \n");
 			for (int i = 0; i < numSoldiers; i++){
 			
 				area.append(soldiers.get(i).toString());

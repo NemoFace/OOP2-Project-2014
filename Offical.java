@@ -94,7 +94,7 @@ private final int bonus = 7;
 	 *returns String 
 	 */
 	public String toString(){
-		return String.format("Unit: %s \nReg. Number: %d, %s", unit, regNo , super.toString());
+		return String.format("\n\nUnit: %s \nReg. Number: %d, %s", unit, regNo , super.toString());
 		
 	}
 }
