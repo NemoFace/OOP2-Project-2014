@@ -1,15 +1,15 @@
 
 
 //Niamh Moylan
-//T00158725
-//Start Date - 27/11/2014
-//OOP2 Project 
 
-//Army Class - Base Class
-
-//This class give the blueprint for every Army created within this game
-
-
+ //T00158725
+ //Start Date - 27/11/2014
+ //OOP2 Project 
+ 
+ //Army Class - Base Class
+ 
+ //This class give the blueprint for every Army created within this game
+ 
 import java.io.*;
 public class Army implements Serializable {
 	
@@ -28,6 +28,7 @@ public class Army implements Serializable {
 		this.arms = arms;
 		this.support = support;	
 	}
+
 
 	public void setMorale(int morale) {
 		this.morale = morale;

@@ -1,11 +1,11 @@
-
-//Niamh Moylan
-//T00158725
-//Start Date - 27/11/2014
-//OOP2 Project 
-
-//Ofical Army Class - Derived Class
-
+/**
+ *@author Niamh Moylan
+ *T00158725
+ *@since 27/11/2014
+ *OOP2 Project 
+ *Ofical Army Class - Derived Class
+ *
+*/
 import java.io.*;
 
 public class Offical extends Army implements Serializable {
@@ -35,7 +35,12 @@ private final int bonus = 7;
 	public int getRegNo(){
 		return regNo;
 	}
-	
+	/**
+	 *Gives a bonus of 5 to the 'Arms' Stat
+	 *@parm arms
+	 *@return int A combomantion of the randomly generated atat and it's bonus
+	 *
+	 */
 	public void setOfArms(int arms){
 		setArms(getArms() + bonus);
 	}
